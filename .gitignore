@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+
+# Data & model artifacts — never commit
+data/
+checkpoints/
+curves/
+wandb/
+*.csv
+*.zip
+*.ckpt
+*.pt
+*.pkl
+
+# Secrets
+.env
+api_key.txt
