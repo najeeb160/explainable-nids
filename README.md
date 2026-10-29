@@ -8,7 +8,7 @@ Combines GraphIDS — a self-supervised GNN (E-GraphSAGE + Transformer masked au
 NF-UNSW-NB15-v3 — 2,365,424 labeled NetFlow records, 53 features, 10 attack categories. Download link is in the [GraphIDS repo README](https://github.com/lorenzo9uerra/GraphIDS).
 
 ## Roadmap
- [] Phase 0 — Environment setup, dataset loading, LLM proof of concept  
+ [✔] Phase 0 — Environment setup, dataset loading, LLM proof of concept  
  [] Phase 1 — Dataset exploration and analysis  
  [] Phase 2 — GraphIDS training (E-GraphSAGE + Transformer, benign-only, threshold selection)  
  [] Phase 3 — Graph construction from network flows  
@@ -19,7 +19,7 @@ Open the notebooks directly in Colab — no setup needed:
 
 | Phase| Notebook |
 | ------------------------------ | ------------------------------ |
-| Phase 0 | |
+| Phase 0 | [[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]](https://colab.research.google.com/github/najeeb160/explainable-nids/blob/main/notebooks/Phase0_Setup.ipynb) |
 	
 	
 ## Repository Structure
