@@ -1,0 +1,8 @@
+# Notebook-level dependencies.
+# NOTE: training dependencies come from GraphIDS's pyproject.toml via `uv sync` inside the notebook.
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+groq
