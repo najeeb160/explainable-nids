@@ -36,7 +36,7 @@ Open the notebooks directly in Colab — no setup needed:
 
 ## Tech Stack
 
-Python · PyTorch · PyTorch Geometric · Groq API (LLM) · Google Colab
+Python · PyTorch · NetworkX · PyTorch Geometric · Groq API (LLM) · Kaggle Notebooks
 
 ## License
 
