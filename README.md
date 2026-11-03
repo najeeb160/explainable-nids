@@ -20,7 +20,7 @@ Open the notebooks directly in Colab — no setup needed:
 | Phase| Notebook |
 | ------------------------------ | ------------------------------ |
 | Phase 0 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase0-setup) |
-| Phase 1 | [[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]](https://colab.research.google.com/github/najeeb160/explainable-nids/blob/main/notebooks/Phase1_Data_Exploration.ipynb) |
+| Phase 1 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase0-setup) |
 	
 	
 ## Repository Structure
