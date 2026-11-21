@@ -1,0 +1,30 @@
+{
+  "phase": "Phase 3 \u2014 GraphIDS training & evaluation",
+  "finished": "2026-11-21T16:48:24",
+  "model": "E-GraphSAGE (1-hop, 48) + Transformer MAE (1 layer, d_model 48, 4 heads, window 512, mask 0.15)",
+  "parameters": 84141,
+  "train_benign_edges": 1114449,
+  "threshold": 126.72205352783203,
+  "threshold_rule": "p99 of val benign errors",
+  "best_val_pr_auc": 0.7988,
+  "test": {
+    "pr_auc": 0.807369628922106,
+    "roc_auc": 0.9813361764291952,
+    "precision": 0.8977413623407002,
+    "recall": 0.758038229484841,
+    "f1": 0.8219962079539337,
+    "tp": 70233,
+    "fp": 8000,
+    "fn": 22418,
+    "tn": 935244,
+    "threshold": 126.72205352783203,
+    "n_test": 1035895,
+    "n_test_attacks": 92651
+  },
+  "unseen_ips": {
+    "n_edges": 445,
+    "n_attacks": 0,
+    "recall": null
+  },
+  "epochs_run": 47
+}
