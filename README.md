@@ -9,7 +9,7 @@ NF-UNSW-NB15-v3 — 2,365,424 labeled NetFlow records, 53 features, 10 attack ca
 
 ## Roadmap
  [✔] Phase 0 — Environment setup, dataset loading, LLM proof of concept  
- [] Phase 1 — Dataset exploration and analysis  
+ [✔] Phase 1 — Dataset exploration and analysis  
  [] Phase 2 — GraphIDS training (E-GraphSAGE + Transformer, benign-only, threshold selection)  
  [] Phase 3 — Graph construction from network flows  
  [] Phase 4 — LLM-generated alert explanations  
@@ -20,7 +20,7 @@ Open the notebooks directly in Colab — no setup needed:
 | Phase| Notebook |
 | ------------------------------ | ------------------------------ |
 | Phase 0 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase0-setup) |
-| Phase 1 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase0-setup) |
+| Phase 1 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase1-data-exploration) |
 	
 	
 ## Repository Structure
