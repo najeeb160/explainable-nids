@@ -10,9 +10,29 @@ NF-UNSW-NB15-v3 — 2,365,424 labeled NetFlow records, 53 features, 10 attack ca
 ## Roadmap
  [✔] Phase 0 — Environment setup, dataset loading, LLM proof of concept  
  [✔] Phase 1 — Dataset exploration and analysis  
- [✔] Phase 2 — GraphIDS training (E-GraphSAGE + Transformer, benign-only, threshold selection)
- [✔] Phase 3 — Graph construction from network flows  
- [] Phase 4 — LLM-generated alert explanations  
+ [✔] Phase 2 — Preprocessing & graph construction (44-node graph, 2.35M edges, 45 features)  
+ [✔] Phase 3 — GraphIDS training & evaluation (E-GraphSAGE + Transformer MAE)   
+ [] Phase 4 — Explainability module, LLM narration  
+ [] Phase 5 — Final report and documentation
+
+## 📊 Phase 3 Results — GraphIDS
+**Model:** E-GraphSAGE (1-hop, node dim 48) + 1-layer Transformer MAE (d_model 48, 4 heads, window 512, mask ratio 0.15) — 84,141 parameters. Trained jointly on 1,114,449 benign edges only (self-supervised reconstruction); threshold = p99 of benign validation reconstruction error (126.7). Early stopping at epoch 47; best val PR-AUC 0.7988.
+
+| Metric| Value |
+| ------------------------------ | ------------------------------ |
+| Test PR-AUC | 0.8074 |
+| Test ROC-AUC | 0.9813 |
+| Precision / Recall / F1 | 0.8977 / 0.7580 / 0.8220 |
+| Confusion (TP/FP/FN/TN) | 70,233 / 8,000 / 22,418 / 935,244 |
+
+**Per-class recall:** Fuzzers 98.2% · Worms 97.5% · Reconnaissance 91.5% · Generic 90.5% · Shellcode 89.7% · Backdoor 79.6% · DoS 69.1% · Exploits 47.9% · Analysis 1.4%. Exploit traffic accounts for ~75% of missed detections — consistent with the literature that exploits closely resemble benign flows, and the core motivation for Phase 4 explainability.
+
+**Unseen IPs:** 4 test IPs never seen in benign training; 445 test edges touch them (0 attacks); 45.8% flagged — the detector is conservative toward unseen hosts (zero-context nodes).
+
+**Benchmarking note:** unlike supervised NIDS baselines (e.g., E-GraphSAGE, F1 = 0.97 on UNSW-NB15) that train on labeled attacks, this detector trains exclusively on benign traffic and flags novel attacks as deviations from learned normal behavior — a harder task; its F1 of 0.822 exceeds the ≈0.78 reported for unsupervised anomaly detection (Anomal-E, Caville et al. 2022) despite a more challenging evaluation split.
+
+**Artifacts:** artifacts/phase3_summary.json · artifacts/phase3_figures.png · artifacts/graphids_model.pt  
+**Notebook:** notebooks/Phase3_GraphIDS_Training.ipynb
 
 ## Quick Start
 Open the notebooks directly in Colab — no setup needed:
