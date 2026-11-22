@@ -1,0 +1,280 @@
+{
+  "phase": "Phase 4 \u2014 Explainability & LLM narration",
+  "finished": "2026-11-22 13:22:25",
+  "reproduction_gate": "PASS",
+  "note": "exact match",
+  "pr_auc_reproduced": 0.8074,
+  "roc_auc_reproduced": 0.9813,
+  "z_layout": "z = [src-context 48 | flow 45 | dst-context 48]",
+  "feature_names_source": "verified fingerprint ordering",
+  "edges_explained": 256,
+  "narrations": 36,
+  "narration_failures": 0,
+  "faithfulness": 0.839,
+  "exploit_missed_features": [
+    "MAX_TTL",
+    "MIN_TTL",
+    "IN_BYTES",
+    "RETRANSMITTED_IN_BYTES",
+    "SRC_TO_DST_IAT_AVG"
+  ],
+  "fp_driver_features": [
+    "SRC_TO_DST_IAT_AVG",
+    "DURATION_IN",
+    "SERVER_TCP_FLAGS",
+    "DURATION_OUT",
+    "SRC_TO_DST_IAT_MAX"
+  ],
+  "error_split_by_class": {
+    "Benign": [
+      0.064,
+      0.881,
+      0.056
+    ],
+    "Exploits": [
+      0.044,
+      0.903,
+      0.053
+    ],
+    "Fuzzers": [
+      0.035,
+      0.923,
+      0.042
+    ],
+    "Generic": [
+      0.035,
+      0.925,
+      0.04
+    ],
+    "Reconnaissance": [
+      0.038,
+      0.917,
+      0.045
+    ],
+    "DoS": [
+      0.037,
+      0.917,
+      0.045
+    ],
+    "Shellcode": [
+      0.037,
+      0.922,
+      0.042
+    ],
+    "Backdoor": [
+      0.037,
+      0.919,
+      0.044
+    ],
+    "Analysis": [
+      0.196,
+      0.623,
+      0.181
+    ],
+    "Worms": [
+      0.035,
+      0.924,
+      0.041
+    ]
+  },
+  "class_top_features": {
+    "Benign": [
+      "SRC_TO_DST_IAT_AVG",
+      "DURATION_IN",
+      "SERVER_TCP_FLAGS",
+      "NUM_PKTS_128_TO_256_BYTES",
+      "LONGEST_FLOW_PKT"
+    ],
+    "Exploits": [
+      "MAX_TTL",
+      "MIN_TTL",
+      "DST_TO_SRC_IAT_AVG",
+      "RETRANSMITTED_IN_BYTES",
+      "IN_BYTES"
+    ],
+    "Fuzzers": [
+      "MAX_TTL",
+      "MIN_TTL",
+      "DST_TO_SRC_IAT_AVG",
+      "TCP_WIN_MAX_IN",
+      "SRC_TO_DST_IAT_AVG"
+    ],
+    "Generic": [
+      "MAX_TTL",
+      "MIN_TTL",
+      "SRC_TO_DST_IAT_AVG",
+      "TCP_WIN_MAX_IN",
+      "FLOW_DURATION_MILLISECONDS"
+    ],
+    "Reconnaissance": [
+      "MAX_TTL",
+      "MIN_TTL",
+      "SRC_TO_DST_IAT_AVG",
+      "DST_TO_SRC_IAT_AVG",
+      "TCP_WIN_MAX_IN"
+    ],
+    "DoS": [
+      "MAX_TTL",
+      "MIN_TTL",
+      "SRC_TO_DST_IAT_AVG",
+      "RETRANSMITTED_IN_BYTES",
+      "IN_BYTES"
+    ],
+    "Shellcode": [
+      "MAX_TTL",
+      "MIN_TTL",
+      "DST_TO_SRC_IAT_AVG",
+      "TCP_WIN_MAX_IN",
+      "FLOW_DURATION_MILLISECONDS"
+    ],
+    "Backdoor": [
+      "MAX_TTL",
+      "MIN_TTL",
+      "DST_TO_SRC_IAT_AVG",
+      "TCP_WIN_MAX_IN",
+      "DST_TO_SRC_IAT_STDDEV"
+    ],
+    "Analysis": [
+      "MAX_TTL",
+      "DST_TO_SRC_IAT_AVG",
+      "DST_TO_SRC_IAT_STDDEV",
+      "MIN_TTL",
+      "L7_PROTO"
+    ],
+    "Worms": [
+      "MAX_TTL",
+      "MIN_TTL",
+      "L7_PROTO",
+      "DST_TO_SRC_IAT_AVG",
+      "TCP_WIN_MAX_IN"
+    ]
+  },
+  "case_studies": {
+    "TP": {
+      "group": "TP",
+      "true_label": "Exploits",
+      "src": "175.45.176.2",
+      "dst": "149.171.126.16",
+      "score": 379.8,
+      "threshold": 126.7,
+      "top_flow_feature": "MAX_TTL",
+      "top_ratio": 358.5,
+      "error_split": {
+        "src-context (GNN)": 0.025,
+        "flow features (45)": 0.954,
+        "dst-context (GNN)": 0.021
+      },
+      "ig_top": [
+        {
+          "feature": "MAX_TTL",
+          "attribution": 159.756,
+          "error_ratio": 358.5
+        },
+        {
+          "feature": "MIN_TTL",
+          "attribution": 104.133,
+          "error_ratio": 44.5
+        },
+        {
+          "feature": "SHORTEST_FLOW_PKT",
+          "attribution": 91.712,
+          "error_ratio": 15.2
+        },
+        {
+          "feature": "SRC_TO_DST_AVG_THROUGHPUT",
+          "attribution": -13.367,
+          "error_ratio": 5.2
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "attribution": 8.115,
+          "error_ratio": 2.9
+        }
+      ]
+    },
+    "FN": {
+      "group": "FN",
+      "true_label": "Exploits",
+      "src": "175.45.176.3",
+      "dst": "149.171.126.17",
+      "score": 106.3,
+      "threshold": 126.7,
+      "top_flow_feature": "RETRANSMITTED_IN_BYTES",
+      "top_ratio": 69.6,
+      "error_split": {
+        "src-context (GNN)": 0.096,
+        "flow features (45)": 0.795,
+        "dst-context (GNN)": 0.109
+      },
+      "ig_top": [
+        {
+          "feature": "RETRANSMITTED_IN_BYTES",
+          "attribution": 30.163,
+          "error_ratio": 69.6
+        },
+        {
+          "feature": "IN_BYTES",
+          "attribution": 29.9,
+          "error_ratio": 51.7
+        },
+        {
+          "feature": "RETRANSMITTED_IN_PKTS",
+          "attribution": 23.429,
+          "error_ratio": 14.5
+        },
+        {
+          "feature": "NUM_PKTS_256_TO_512_BYTES",
+          "attribution": 4.337,
+          "error_ratio": 1.0
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "attribution": 1.967,
+          "error_ratio": 0.1
+        }
+      ]
+    },
+    "FP": {
+      "group": "FP",
+      "true_label": "Benign",
+      "src": "59.166.0.3",
+      "dst": "149.171.126.8",
+      "score": 677.8,
+      "threshold": 126.7,
+      "top_flow_feature": "DURATION_IN",
+      "top_ratio": 103.8,
+      "error_split": {
+        "src-context (GNN)": 0.004,
+        "flow features (45)": 0.993,
+        "dst-context (GNN)": 0.003
+      },
+      "ig_top": [
+        {
+          "feature": "SERVER_TCP_FLAGS",
+          "attribution": 65.334,
+          "error_ratio": 96.8
+        },
+        {
+          "feature": "DURATION_IN",
+          "attribution": 63.377,
+          "error_ratio": 103.8
+        },
+        {
+          "feature": "SRC_TO_DST_IAT_MAX",
+          "attribution": 58.697,
+          "error_ratio": 22.4
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "attribution": 53.338,
+          "error_ratio": 4.1
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "attribution": 51.918,
+          "error_ratio": 8.0
+        }
+      ]
+    }
+  }
+}

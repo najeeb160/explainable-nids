@@ -1,0 +1,1670 @@
+[
+  {
+    "kind": "alert",
+    "pos": 736027,
+    "true_label": "Fuzzers",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 205.8,
+      "threshold": 126.7,
+      "src": "175.45.176.0",
+      "dst": "149.171.126.13",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.165,
+          "error_ratio": 321.0,
+          "attribution": 97.428
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 43.5,
+          "attribution": 96.444
+        },
+        {
+          "feature": "LONGEST_FLOW_PKT",
+          "value": 1.256,
+          "error_ratio": 0.4,
+          "attribution": -3.744
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -1.61,
+          "error_ratio": 0.3,
+          "attribution": 2.737
+        },
+        {
+          "feature": "ICMP_TYPE",
+          "value": 1.981,
+          "error_ratio": 0.1,
+          "attribution": -2.733
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual TTL drop \ud83d\udea8  \n**What happened:** 175.45.176.0 \u2192 149.171.126.13  \n**Why flagged:** MAX_TTL = 9.165, 321x benign-typical error; MIN_TTL = 9.153, 43.5x benign-typical error  \n**Behaviour hypothesis:** consistent with a stealthy ICMP probe attempting to bypass normal TTL thresholds.  \n**Recommended action:** Block ICMP traffic from 175.45.176.0 and monitor for repeat TTL anomalies."
+  },
+  {
+    "kind": "alert",
+    "pos": 779188,
+    "true_label": "Fuzzers",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 201.2,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.14",
+      "top_features": [
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 43.5,
+          "attribution": 95.197
+        },
+        {
+          "feature": "MAX_TTL",
+          "value": 9.165,
+          "error_ratio": 317.9,
+          "attribution": 84.57
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -1.61,
+          "error_ratio": 0.3,
+          "attribution": 3.602
+        },
+        {
+          "feature": "MAX_IP_PKT_LEN",
+          "value": -1.039,
+          "error_ratio": 0.0,
+          "attribution": -3.184
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_AVG",
+          "value": 1.657,
+          "error_ratio": 1.8,
+          "attribution": 2.505
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 *TTL anomaly detected \ud83d\udea8*  \n**What happened:** 175.45.176.3 \u2192 149.171.126.14  \n**Why flagged:** MIN_TTL = 9.153, 43.5x benign\u2011typical error; MAX_TTL = 9.165, 317.9x benign\u2011typical error; DST_TO_SRC_IAT_AVG = 1.657, 1.8x benign\u2011typical error.  \n**Behaviour hypothesis:** consistent with a low\u2011TTL stealth scan attempting to evade detection.  \n**Recommended action:** block source IP 175.45.176.3 and investigate related traffic for port\u2011scanning activity."
+  },
+  {
+    "kind": "alert",
+    "pos": 804216,
+    "true_label": "Fuzzers",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 312.5,
+      "threshold": 126.7,
+      "src": "175.45.176.1",
+      "dst": "149.171.126.11",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.123,
+          "error_ratio": 349.1,
+          "attribution": 109.037
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 41.2,
+          "attribution": 101.311
+        },
+        {
+          "feature": "SHORTEST_FLOW_PKT",
+          "value": 10.0,
+          "error_ratio": 14.1,
+          "attribution": 84.502
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -5.857,
+          "error_ratio": 2.5,
+          "attribution": 11.963
+        },
+        {
+          "feature": "SRC_TO_DST_AVG_THROUGHPUT",
+          "value": 4.295,
+          "error_ratio": 2.6,
+          "attribution": 4.275
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual TTL drop detected \ud83d\udea8  \n**What happened:** 175.45.176.1 \u2192 149.171.126.11  \n**Why flagged:** MAX_TTL = 9.123, 349.1x benign-typical error; MIN_TTL = 9.153, 41.2x error; SHORTEST_FLOW_PKT = 10.0, 14.1x error  \n**Behaviour hypothesis:** consistent with a potential TTL\u2011manipulating stealth scan.  \n**Recommended action:** isolate the source host and perform a packet capture for deeper analysis."
+  },
+  {
+    "kind": "alert",
+    "pos": 997073,
+    "true_label": "Fuzzers",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 232.4,
+      "threshold": 126.7,
+      "src": "175.45.176.1",
+      "dst": "149.171.126.15",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.165,
+          "error_ratio": 320.0,
+          "attribution": 111.383
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 45.7,
+          "attribution": 95.792
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -1.61,
+          "error_ratio": 0.3,
+          "attribution": 4.72
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_AVG",
+          "value": 2.928,
+          "error_ratio": 6.5,
+          "attribution": 3.997
+        },
+        {
+          "feature": "DST_TO_SRC_AVG_THROUGHPUT",
+          "value": -0.629,
+          "error_ratio": 0.0,
+          "attribution": -2.927
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual TTL drop detected \ud83d\udea8  \n**What happened:** 175.45.176.1 \u2192 149.171.126.15  \n**Why flagged:** MAX_TTL = 9.165, 320x benign-typical error; MIN_TTL = 9.153, 45.7x error  \n**Behaviour hypothesis:** consistent with a misconfigured or malicious device sending packets with abnormally low TTL values.  \n**Recommended action:** Verify the source host\u2019s routing configuration and inspect for potential compromise."
+  },
+  {
+    "kind": "alert",
+    "pos": 353583,
+    "true_label": "Exploits",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 217.8,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.10",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.165,
+          "error_ratio": 326.1,
+          "attribution": 98.627
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 43.6,
+          "attribution": 89.974
+        },
+        {
+          "feature": "RETRANSMITTED_IN_BYTES",
+          "value": 1.844,
+          "error_ratio": 6.3,
+          "attribution": 4.282
+        },
+        {
+          "feature": "RETRANSMITTED_IN_PKTS",
+          "value": 1.743,
+          "error_ratio": 1.2,
+          "attribution": 4.016
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -1.61,
+          "error_ratio": 0.2,
+          "attribution": 3.047
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 *Anomalous TTL burst \ud83d\udea8*  \n**What happened:** 175.45.176.3 \u2192 149.171.126.10  \n**Why flagged:** MAX_TTL = 9.165, 326.1x benign-typical error; MIN_TTL = 9.153, 43.6x error; RETRANSMITTED_IN_BYTES = 1.844, 6.3x error  \n**Behaviour hypothesis:** consistent with a misconfigured or malicious host sending packets with unusually low TTL values.  \n**Recommended action:** isolate the source IP and perform a packet capture to verify TTL manipulation and potential exfiltration."
+  },
+  {
+    "kind": "alert",
+    "pos": 175489,
+    "true_label": "Generic",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 243.3,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.18",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.123,
+          "error_ratio": 357.8,
+          "attribution": 111.496
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 41.4,
+          "attribution": 94.98
+        },
+        {
+          "feature": "DNS_QUERY_TYPE",
+          "value": 4.433,
+          "error_ratio": 1.0,
+          "attribution": 26.644
+        },
+        {
+          "feature": "L4_SRC_PORT",
+          "value": -1.665,
+          "error_ratio": 0.2,
+          "attribution": -4.334
+        },
+        {
+          "feature": "TCP_FLAGS",
+          "value": -1.822,
+          "error_ratio": 2.4,
+          "attribution": 4.163
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 \u201cUnusual TTL drop, suspicious traffic \ud83d\udea8\u201d  \n**What happened:** 175.45.176.3 \u2192 149.171.126.18  \n**Why flagged:** MAX_TTL = 9.123, 357.8x benign-typical error; MIN_TTL = 9.153, 41.4x benign-typical error; DNS_QUERY_TYPE = 4.433, 1.0x benign-typical error  \n**Behaviour hypothesis:** consistent with a compromised host attempting to evade detection by manipulating TTL values.  \n**Recommended action:** isolate the source IP, block outbound traffic to the destination, and conduct a forensic packet capture."
+  },
+  {
+    "kind": "alert",
+    "pos": 562602,
+    "true_label": "Exploits",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 229.1,
+      "threshold": 126.7,
+      "src": "175.45.176.1",
+      "dst": "149.171.126.14",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.123,
+          "error_ratio": 332.3,
+          "attribution": 109.718
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 41.3,
+          "attribution": 101.504
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -5.857,
+          "error_ratio": 1.8,
+          "attribution": 5.999
+        },
+        {
+          "feature": "L4_SRC_PORT",
+          "value": -1.327,
+          "error_ratio": 0.2,
+          "attribution": -3.411
+        },
+        {
+          "feature": "TCP_FLAGS",
+          "value": -1.822,
+          "error_ratio": 2.6,
+          "attribution": 2.784
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual TTL drop, suspicious traffic \ud83d\udea8  \n**What happened:** 175.45.176.1 \u2192 149.171.126.14  \n**Why flagged:** MAX_TTL = 9.123, 332.3x benign-typical error; MIN_TTL = 9.153, 41.3x benign-typical error; TCP_FLAGS = -1.822, 2.6x benign-typical error  \n**Behaviour hypothesis:** consistent with a stealthy scanning or tunneling attempt.  \n**Recommended action:** isolate the source host and block outbound traffic to 149.171.126.14."
+  },
+  {
+    "kind": "alert",
+    "pos": 444258,
+    "true_label": "Reconnaissance",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 233.2,
+      "threshold": 126.7,
+      "src": "175.45.176.2",
+      "dst": "149.171.126.16",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.123,
+          "error_ratio": 327.9,
+          "attribution": 117.792
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 42.4,
+          "attribution": 106.305
+        },
+        {
+          "feature": "TCP_FLAGS",
+          "value": -1.822,
+          "error_ratio": 2.4,
+          "attribution": 3.756
+        },
+        {
+          "feature": "L7_PROTO",
+          "value": -1.216,
+          "error_ratio": 1.7,
+          "attribution": 3.26
+        },
+        {
+          "feature": "ICMP_IPV4_TYPE",
+          "value": -1.187,
+          "error_ratio": 0.0,
+          "attribution": -2.877
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual TTL drop, suspicious traffic \ud83d\udea8  \n**What happened:** 175.45.176.2 \u2192 149.171.126.16  \n**Why flagged:** MAX_TTL = 9.123, 327.9x benign-typical error; MIN_TTL = 9.153, 42.4x benign-typical error; TCP_FLAGS = -1.822, 2.4x benign-typical error  \n**Behaviour hypothesis:** consistent with a stealthy probe attempting to evade detection by manipulating TTL values.  \n**Recommended action:** isolate the source host and conduct a packet capture to verify malicious intent."
+  },
+  {
+    "kind": "alert",
+    "pos": 763451,
+    "true_label": "Generic",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 260.8,
+      "threshold": 126.7,
+      "src": "175.45.176.1",
+      "dst": "149.171.126.14",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.123,
+          "error_ratio": 348.0,
+          "attribution": 109.54
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 43.2,
+          "attribution": 101.544
+        },
+        {
+          "feature": "DNS_QUERY_TYPE",
+          "value": 4.433,
+          "error_ratio": 1.1,
+          "attribution": 28.115
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -5.857,
+          "error_ratio": 2.2,
+          "attribution": 4.895
+        },
+        {
+          "feature": "TCP_FLAGS",
+          "value": -1.822,
+          "error_ratio": 4.2,
+          "attribution": 4.813
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 anomalous TTL behavior \ud83d\udea8  \n**What happened:** 175.45.176.1 \u2192 149.171.126.14  \n**Why flagged:** MAX_TTL = 9.123, 348x benign-typical error; MIN_TTL = 9.153, 43x benign-typical error  \n**Behaviour hypothesis:** consistent with TTL spoofing or misconfigured host attempting to evade detection.  \n**Recommended action:** Immediately block 175.45.176.1 at the perimeter firewall."
+  },
+  {
+    "kind": "alert",
+    "pos": 666321,
+    "true_label": "Fuzzers",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 244.6,
+      "threshold": 126.7,
+      "src": "175.45.176.1",
+      "dst": "149.171.126.15",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.165,
+          "error_ratio": 328.0,
+          "attribution": 108.713
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 44.7,
+          "attribution": 96.961
+        },
+        {
+          "feature": "RETRANSMITTED_IN_BYTES",
+          "value": 3.418,
+          "error_ratio": 21.6,
+          "attribution": 12.436
+        },
+        {
+          "feature": "RETRANSMITTED_IN_PKTS",
+          "value": 2.919,
+          "error_ratio": 4.9,
+          "attribution": 8.876
+        },
+        {
+          "feature": "IN_BYTES",
+          "value": 3.381,
+          "error_ratio": 15.3,
+          "attribution": 7.142
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual TTL, high retransmissions \ud83d\udea8  \n**What happened:** 175.45.176.1 \u2192 149.171.126.15  \n**Why flagged:** MAX_TTL = 9.165, 328x benign-typical error; MIN_TTL = 9.153, 44.7x error; RETRANSMITTED_IN_BYTES = 3.418, 21.6x error  \n**Behaviour hypothesis:** consistent with a misconfigured or malicious host repeatedly retransmitting packets with abnormally low TTLs.  \n**Recommended action:** isolate the source IP and perform packet capture to verify legitimate traffic or block if malicious."
+  },
+  {
+    "kind": "alert",
+    "pos": 789661,
+    "true_label": "Generic",
+    "severity": "critical",
+    "record": {
+      "kind": "alert",
+      "score": 231.3,
+      "threshold": 126.7,
+      "src": "175.45.176.2",
+      "dst": "149.171.126.11",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.123,
+          "error_ratio": 336.7,
+          "attribution": 110.95
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 42.2,
+          "attribution": 98.148
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -5.857,
+          "error_ratio": 2.2,
+          "attribution": 8.063
+        },
+        {
+          "feature": "TCP_FLAGS",
+          "value": -1.639,
+          "error_ratio": 2.1,
+          "attribution": 4.046
+        },
+        {
+          "feature": "L7_PROTO",
+          "value": -1.216,
+          "error_ratio": 2.9,
+          "attribution": 3.842
+        }
+      ]
+    },
+    "narration": "**Severity:** critical \u2014 extreme TTL anomaly \ud83d\udea8  \n**What happened:** 175.45.176.2 \u2192 149.171.126.11  \n**Why flagged:** MAX_TTL = 9.123, 336.7x benign-typical error; MIN_TTL = 9.153, 42.2x error  \n**Behaviour hypothesis:** consistent with a mis\u2011configured or malicious host sending packets with unusually low TTL values.  \n**Recommended action:** isolate the source IP, block outbound traffic, and investigate host configuration."
+  },
+  {
+    "kind": "alert",
+    "pos": 797260,
+    "true_label": "Reconnaissance",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 219.7,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.11",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.165,
+          "error_ratio": 316.4,
+          "attribution": 102.202
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 42.9,
+          "attribution": 96.894
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_AVG",
+          "value": 5.642,
+          "error_ratio": 32.3,
+          "attribution": 14.154
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_MAX",
+          "value": 1.661,
+          "error_ratio": 0.1,
+          "attribution": -2.969
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_STDDEV",
+          "value": 3.951,
+          "error_ratio": 3.5,
+          "attribution": -2.535
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual TTL drop detected \ud83d\udea8  \n**What happened:** 175.45.176.3 \u2192 149.171.126.11  \n**Why flagged:** MAX_TTL = 9.165, 316.4x benign-typical error; MIN_TTL = 9.153, 42.9x benign-typical error; DST_TO_SRC_IAT_AVG = 5.642, 32.3x benign-typical error  \n**Behaviour hypothesis:** consistent with a low\u2011TTL stealth scan attempting to evade detection.  \n**Recommended action:** block the source IP and monitor for repeated low\u2011TTL probes."
+  },
+  {
+    "kind": "alert",
+    "pos": 72386,
+    "true_label": "Fuzzers",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 360.8,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.14",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.123,
+          "error_ratio": 352.0,
+          "attribution": 132.535
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 43.1,
+          "attribution": 106.773
+        },
+        {
+          "feature": "SHORTEST_FLOW_PKT",
+          "value": 10.0,
+          "error_ratio": 14.9,
+          "attribution": 90.516
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -5.857,
+          "error_ratio": 2.5,
+          "attribution": 7.431
+        },
+        {
+          "feature": "PROTOCOL",
+          "value": 1.558,
+          "error_ratio": 1.7,
+          "attribution": 4.333
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 suspicious TTL anomaly \ud83d\udea8  \n**What happened:** 175.45.176.3 \u2192 149.171.126.14  \n**Why flagged:** MAX_TTL = 9.123, 352x benign-typical error; MIN_TTL = 9.153, 43.1x error; SHORTEST_FLOW_PKT = 10.0, 14.9x error  \n**Behaviour hypothesis:** consistent with a misconfigured or malicious device manipulating TTL values.  \n**Recommended action:** isolate the source host and perform a packet capture to verify TTL manipulation."
+  },
+  {
+    "kind": "alert",
+    "pos": 238739,
+    "true_label": "Exploits",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 211.0,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.10",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 9.165,
+          "error_ratio": 319.9,
+          "attribution": 97.728
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 43.7,
+          "attribution": 91.465
+        },
+        {
+          "feature": "LONGEST_FLOW_PKT",
+          "value": 1.256,
+          "error_ratio": 0.2,
+          "attribution": -3.957
+        },
+        {
+          "feature": "NUM_PKTS_UP_TO_128_BYTES",
+          "value": -0.547,
+          "error_ratio": 0.3,
+          "attribution": -2.713
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -1.61,
+          "error_ratio": 0.2,
+          "attribution": 2.581
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual TTL drop detected \ud83d\udea8  \n**What happened:** 175.45.176.3 \u2192 149.171.126.10  \n**Why flagged:** MAX_TTL = 9.165, 319.9x benign-typical error; MIN_TTL = 9.153, 43.7x benign-typical error  \n**Behaviour hypothesis:** consistent with a stealthy probe or misconfigured host sending packets with abnormally low TTLs.  \n**Recommended action:** Investigate the source host for misconfiguration or compromise; block traffic from 175.45.176.3 if no legitimate service is expected."
+  },
+  {
+    "kind": "alert",
+    "pos": 102774,
+    "true_label": "Exploits",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 209.7,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.13",
+      "top_features": [
+        {
+          "feature": "MIN_TTL",
+          "value": 9.153,
+          "error_ratio": 42.2,
+          "attribution": 88.289
+        },
+        {
+          "feature": "MAX_TTL",
+          "value": 9.165,
+          "error_ratio": 319.4,
+          "attribution": 85.413
+        },
+        {
+          "feature": "L7_PROTO",
+          "value": 10.0,
+          "error_ratio": 46.2,
+          "attribution": 19.324
+        },
+        {
+          "feature": "MIN_IP_PKT_LEN",
+          "value": -1.61,
+          "error_ratio": 0.2,
+          "attribution": 1.099
+        },
+        {
+          "feature": "NUM_PKTS_UP_TO_128_BYTES",
+          "value": -0.495,
+          "error_ratio": 0.0,
+          "attribution": -0.489
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 \u201cUnusual TTL, protocol anomaly \ud83d\udea8\u201d  \n**What happened:** 175.45.176.3 \u2192 149.171.126.13  \n**Why flagged:** MIN_TTL = 9.153, 42.2x benign\u2011typical error; MAX_TTL = 9.165, 319.4x benign\u2011typical error; L7_PROTO = 10.0, 46.2x benign\u2011typical error.  \n**Behaviour hypothesis:** consistent with a stealthy, low\u2011TTL beaconing attempt.  \n**Recommended action:** block the source IP and investigate outbound traffic for similar TTL patterns."
+  },
+  {
+    "kind": "alert",
+    "pos": 291946,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 500.7,
+      "threshold": 126.7,
+      "src": "59.166.0.4",
+      "dst": "149.171.126.7",
+      "top_features": [
+        {
+          "feature": "OUT_PKTS",
+          "value": 10.0,
+          "error_ratio": 5.3,
+          "attribution": 50.513
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 10.0,
+          "error_ratio": 7.5,
+          "attribution": 50.254
+        },
+        {
+          "feature": "SRC_TO_DST_IAT_MAX",
+          "value": 8.989,
+          "error_ratio": 18.3,
+          "attribution": 50.132
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.9,
+          "attribution": 49.368
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.9,
+          "attribution": 49.042
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual traffic spike detected \ud83d\udea8  \n**What happened:** 59.166.0.4 \u2192 149.171.126.7  \n**Why flagged:** OUT_PKTS = 10.0, 5.3x benign-typical error; NUM_PKTS_512_TO_1024_BYTES = 10.0, 7.5x benign-typical error; SRC_TO_DST_IAT_MAX = 8.989, 18.3x benign-typical error  \n**Behaviour hypothesis:** consistent with a burst of small\u2011packet reconnaissance activity.  \n**Recommended action:** isolate 59.166.0.4 and perform packet capture for further analysis."
+  },
+  {
+    "kind": "alert",
+    "pos": 678373,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 281.3,
+      "threshold": 126.7,
+      "src": "59.166.0.1",
+      "dst": "149.171.126.2",
+      "top_features": [
+        {
+          "feature": "SRC_TO_DST_IAT_MAX",
+          "value": 9.348,
+          "error_ratio": 18.6,
+          "attribution": 49.243
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 13.3,
+          "attribution": 42.945
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 9.306,
+          "error_ratio": 6.0,
+          "attribution": 40.738
+        },
+        {
+          "feature": "DURATION_OUT",
+          "value": 8.325,
+          "error_ratio": 13.2,
+          "attribution": 24.562
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 7.057,
+          "error_ratio": 1.2,
+          "attribution": 21.367
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Suspicious traffic detected \ud83d\udea8  \n**What happened:** 59.166.0.1 \u2192 149.171.126.2  \n**Why flagged:** SRC_TO_DST_IAT_MAX = 9.348, 18.6x benign-typical error; DST_TO_SRC_IAT_MAX = 10.0, 13.3x benign-typical error; NUM_PKTS_512_TO_1024_BYTES = 9.306, 6.0x benign-typical error  \n**Behaviour hypothesis:** consistent with a potential data exfiltration or command\u2011and\u2011control channel.  \n**Recommended action:** Immediately isolate the source host and conduct a packet capture for deeper forensic analysis."
+  },
+  {
+    "kind": "alert",
+    "pos": 934905,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 388.1,
+      "threshold": 126.7,
+      "src": "59.166.0.1",
+      "dst": "149.171.126.3",
+      "top_features": [
+        {
+          "feature": "SERVER_TCP_FLAGS",
+          "value": 10.0,
+          "error_ratio": 91.3,
+          "attribution": 60.704
+        },
+        {
+          "feature": "DURATION_IN",
+          "value": 10.0,
+          "error_ratio": 95.8,
+          "attribution": 51.234
+        },
+        {
+          "feature": "SRC_TO_DST_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 19.8,
+          "attribution": 43.519
+        },
+        {
+          "feature": "DURATION_OUT",
+          "value": 10.0,
+          "error_ratio": 21.9,
+          "attribution": 38.742
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 12.5,
+          "attribution": 33.436
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 High risk activity detected \ud83d\udea8  \n**What happened:** 59.166.0.1 \u2192 149.171.126.3  \n**Why flagged:** SERVER_TCP_FLAGS = 10.0, 91.3x benign-typical error; DURATION_IN = 10.0, 95.8x benign-typical error; DURATION_OUT = 10.0, 21.9x benign-typical error  \n**Behaviour hypothesis:** consistent with a prolonged, flag\u2011heavy connection that deviates markedly from normal traffic patterns.  \n**Recommended action:** Immediately isolate 59.166.0.1 and investigate the session for potential data exfiltration or command\u2011and\u2011control activity."
+  },
+  {
+    "kind": "alert",
+    "pos": 339785,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 165.8,
+      "threshold": 126.7,
+      "src": "59.166.0.7",
+      "dst": "149.171.126.9",
+      "top_features": [
+        {
+          "feature": "DURATION_OUT",
+          "value": 10.0,
+          "error_ratio": 22.0,
+          "attribution": 46.724
+        },
+        {
+          "feature": "SERVER_TCP_FLAGS",
+          "value": 6.234,
+          "error_ratio": 30.0,
+          "attribution": 22.228
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 6.905,
+          "error_ratio": 1.3,
+          "attribution": 21.119
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 7.036,
+          "error_ratio": 1.0,
+          "attribution": 19.73
+        },
+        {
+          "feature": "DURATION_IN",
+          "value": 6.241,
+          "error_ratio": 30.5,
+          "attribution": 18.159
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 \u201cUnusual traffic spike detected \ud83d\udea8\u201d  \n**What happened:** 59.166.0.7 \u2192 149.171.126.9  \n**Why flagged:** DURATION_OUT = 10.0, 22x benign\u2011typical error; SERVER_TCP_FLAGS = 6.234, 30x benign\u2011typical error; DURATION_IN = 6.241, 30.5x benign\u2011typical error  \n**Behaviour hypothesis:** consistent with a potential data exfiltration attempt or malicious command\u2011and\u2011control session.  \n**Recommended action:** isolate the destination host and perform a packet capture for deeper forensic analysis."
+  },
+  {
+    "kind": "alert",
+    "pos": 509199,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 460.2,
+      "threshold": 126.7,
+      "src": "59.166.0.4",
+      "dst": "149.171.126.7",
+      "top_features": [
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 10.0,
+          "error_ratio": 7.5,
+          "attribution": 47.963
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.9,
+          "attribution": 46.117
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.9,
+          "attribution": 44.943
+        },
+        {
+          "feature": "OUT_PKTS",
+          "value": 10.0,
+          "error_ratio": 5.4,
+          "attribution": 41.665
+        },
+        {
+          "feature": "OUT_BYTES",
+          "value": 9.321,
+          "error_ratio": 14.1,
+          "attribution": 34.367
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual outbound traffic \ud83d\udea8  \n**What happened:** 59.166.0.4 \u2192 149.171.126.7  \n**Why flagged:** NUM_PKTS_512_TO_1024_BYTES = 10.0, 7.5x benign-typical error; OUT_BYTES = 9.321, 14.1x benign-typical error  \n**Behaviour hypothesis:** consistent with a data exfiltration attempt or compromised host communicating with an external server.  \n**Recommended action:** isolate host 59.166.0.4, capture traffic for forensic analysis, and block outbound to 149.171.126.7 until investigation completes."
+  },
+  {
+    "kind": "alert",
+    "pos": 137664,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 278.3,
+      "threshold": 126.7,
+      "src": "59.166.0.8",
+      "dst": "149.171.126.1",
+      "top_features": [
+        {
+          "feature": "SRC_TO_DST_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 22.0,
+          "attribution": 57.36
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 13.3,
+          "attribution": 42.227
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 9.306,
+          "error_ratio": 6.0,
+          "attribution": 39.575
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 7.057,
+          "error_ratio": 1.2,
+          "attribution": 21.702
+        },
+        {
+          "feature": "OUT_PKTS",
+          "value": 7.236,
+          "error_ratio": 2.0,
+          "attribution": 19.112
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Suspicious traffic spike \ud83d\udea8  \n**What happened:** 59.166.0.8 \u2192 149.171.126.1  \n**Why flagged:** SRC_TO_DST_IAT_MAX = 10.0, 22.0x benign-typical error; NUM_PKTS_512_TO_1024_BYTES = 9.306, 6.0x benign-typical error  \n**Behaviour hypothesis:** consistent with a potential data exfiltration attempt.  \n**Recommended action:** isolate the source host and block outbound traffic to 149.171.126.1."
+  },
+  {
+    "kind": "alert",
+    "pos": 843101,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 387.0,
+      "threshold": 126.7,
+      "src": "59.166.0.9",
+      "dst": "149.171.126.2",
+      "top_features": [
+        {
+          "feature": "SRC_TO_DST_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 21.3,
+          "attribution": 53.739
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 9.306,
+          "error_ratio": 6.5,
+          "attribution": 45.416
+        },
+        {
+          "feature": "DURATION_OUT",
+          "value": 10.0,
+          "error_ratio": 22.0,
+          "attribution": 41.777
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 13.0,
+          "attribution": 40.0
+        },
+        {
+          "feature": "SERVER_TCP_FLAGS",
+          "value": 7.995,
+          "error_ratio": 54.4,
+          "attribution": 36.601
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 suspicious traffic spike \ud83d\udea8  \n**What happened:** 59.166.0.9 \u2192 149.171.126.2  \n**Why flagged:** SRC_TO_DST_IAT_MAX = 10.0, 21.3x benign-typical error; DURATION_OUT = 10.0, 22.0x error; SERVER_TCP_FLAGS = 7.995, 54.4x error  \n**Behaviour hypothesis:** consistent with a potential data exfiltration attempt or command\u2011and\u2011control beacon.  \n**Recommended action:** isolate the source host and perform a packet capture for deeper forensic analysis."
+  },
+  {
+    "kind": "alert",
+    "pos": 491253,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 268.3,
+      "threshold": 126.7,
+      "src": "59.166.0.1",
+      "dst": "149.171.126.0",
+      "top_features": [
+        {
+          "feature": "SRC_TO_DST_IAT_MAX",
+          "value": 9.947,
+          "error_ratio": 21.9,
+          "attribution": 57.662
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 13.4,
+          "attribution": 42.499
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 9.306,
+          "error_ratio": 6.0,
+          "attribution": 41.858
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 7.057,
+          "error_ratio": 1.2,
+          "attribution": 21.398
+        },
+        {
+          "feature": "OUT_PKTS",
+          "value": 7.236,
+          "error_ratio": 1.9,
+          "attribution": 20.823
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 suspicious traffic spike \ud83d\udea8  \n**What happened:** 59.166.0.1 \u2192 149.171.126.0  \n**Why flagged:** SRC_TO_DST_IAT_MAX = 9.947, 21.9x benign-typical error; NUM_PKTS_512_TO_1024_BYTES = 9.306, 6.0x error; DST_TO_SRC_IAT_MAX = 10.0, 13.4x error  \n**Behaviour hypothesis:** consistent with a bursty, bidirectional data exfiltration attempt.  \n**Recommended action:** isolate destination host, capture traffic for forensic analysis."
+  },
+  {
+    "kind": "alert",
+    "pos": 20586,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 398.6,
+      "threshold": 126.7,
+      "src": "10.40.182.1",
+      "dst": "224.0.0.5",
+      "top_features": [
+        {
+          "feature": "SRC_TO_DST_IAT_AVG",
+          "value": 10.0,
+          "error_ratio": 435.2,
+          "attribution": 99.034
+        },
+        {
+          "feature": "SERVER_TCP_FLAGS",
+          "value": 10.0,
+          "error_ratio": 101.9,
+          "attribution": 72.869
+        },
+        {
+          "feature": "DURATION_IN",
+          "value": 10.0,
+          "error_ratio": 102.6,
+          "attribution": 70.13
+        },
+        {
+          "feature": "SRC_TO_DST_IAT_MAX",
+          "value": 10.0,
+          "error_ratio": 21.8,
+          "attribution": 62.714
+        },
+        {
+          "feature": "PROTOCOL",
+          "value": 10.0,
+          "error_ratio": 53.2,
+          "attribution": 49.388
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 *Massive multicast anomaly detected \ud83d\udea8*  \n**What happened:** 10.40.182.1 \u2192 224.0.0.5  \n**Why flagged:** SRC_TO_DST_IAT_AVG = 10.0, 435.2x benign-typical error; SERVER_TCP_FLAGS = 10.0, 101.9x error; DURATION_IN = 10.0, 102.6x error  \n**Behaviour hypothesis:** consistent with a potential multicast flood or misconfigured router sending excessive traffic.  \n**Recommended action:** Immediately isolate the source host and inspect multicast routing tables for misconfigurations."
+  },
+  {
+    "kind": "alert",
+    "pos": 670393,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 400.4,
+      "threshold": 126.7,
+      "src": "59.166.0.3",
+      "dst": "149.171.126.7",
+      "top_features": [
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.8,
+          "attribution": 49.214
+        },
+        {
+          "feature": "OUT_PKTS",
+          "value": 10.0,
+          "error_ratio": 5.2,
+          "attribution": 48.158
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 10.0,
+          "error_ratio": 7.3,
+          "attribution": 46.444
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 9.66,
+          "error_ratio": 3.4,
+          "attribution": 43.634
+        },
+        {
+          "feature": "IN_PKTS",
+          "value": 10.0,
+          "error_ratio": 3.8,
+          "attribution": 35.393
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 \u201cUnusual traffic spike detected \ud83d\udea8\u201d  \n**What happened:** 59.166.0.3 \u2192 149.171.126.7  \n**Why flagged:** RETRANSMITTED_OUT_BYTES = 10.0, 3.8x benign-typical error; OUT_PKTS = 10.0, 5.2x benign-typical error; NUM_PKTS_512_TO_1024_BYTES = 10.0, 7.3x benign-typical error  \n**Behaviour hypothesis:** consistent with a potential data exfiltration attempt or misconfigured application generating excessive retransmissions.  \n**Recommended action:** Immediately isolate the source host and perform packet capture to verify payload integrity."
+  },
+  {
+    "kind": "alert",
+    "pos": 111809,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 393.6,
+      "threshold": 126.7,
+      "src": "59.166.0.9",
+      "dst": "149.171.126.6",
+      "top_features": [
+        {
+          "feature": "OUT_PKTS",
+          "value": 10.0,
+          "error_ratio": 5.2,
+          "attribution": 49.263
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.8,
+          "attribution": 48.097
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.7,
+          "attribution": 46.438
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 10.0,
+          "error_ratio": 7.2,
+          "attribution": 46.217
+        },
+        {
+          "feature": "IN_PKTS",
+          "value": 10.0,
+          "error_ratio": 3.9,
+          "attribution": 35.962
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 suspicious outbound traffic \ud83d\udea8  \n**What happened:** 59.166.0.9 \u2192 149.171.126.6  \n**Why flagged:** OUT_PKTS = 10.0, 5.2x benign\u2011typical error; RETRANSMITTED_OUT_BYTES = 10.0, 3.8x error; NUM_PKTS_1024_TO_1514_BYTES = 10.0, 3.7x error.  \n**Behaviour hypothesis:** consistent with a potential data exfiltration attempt.  \n**Recommended action:** isolate host 59.166.0.9 and conduct packet capture for forensic analysis."
+  },
+  {
+    "kind": "alert",
+    "pos": 1006879,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 137.9,
+      "threshold": 126.7,
+      "src": "59.166.0.2",
+      "dst": "149.171.126.9",
+      "top_features": [
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 9.306,
+          "error_ratio": 5.3,
+          "attribution": 33.795
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 7.057,
+          "error_ratio": 1.2,
+          "attribution": 22.461
+        },
+        {
+          "feature": "OUT_PKTS",
+          "value": 7.236,
+          "error_ratio": 1.8,
+          "attribution": 17.927
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 6.747,
+          "error_ratio": 1.0,
+          "attribution": 15.074
+        },
+        {
+          "feature": "IN_PKTS",
+          "value": 7.063,
+          "error_ratio": 1.0,
+          "attribution": 9.212
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual traffic spike detected \ud83d\udea8  \n**What happened:** 59.166.0.2 \u2192 149.171.126.9  \n**Why flagged:** NUM_PKTS_512_TO_1024_BYTES = 9.306, 5.3x error; RETRANSMITTED_OUT_BYTES = 7.057, 1.2x error; OUT_PKTS = 7.236, 1.8x error  \n**Behaviour hypothesis:** consistent with anomalous data exfiltration attempts.  \n**Recommended action:** isolate the source host and block outbound traffic to 149.171.126.9."
+  },
+  {
+    "kind": "alert",
+    "pos": 580239,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 211.5,
+      "threshold": 126.7,
+      "src": "59.166.0.9",
+      "dst": "149.171.126.2",
+      "top_features": [
+        {
+          "feature": "DURATION_OUT",
+          "value": 10.0,
+          "error_ratio": 22.4,
+          "attribution": 47.212
+        },
+        {
+          "feature": "SERVER_TCP_FLAGS",
+          "value": 8.353,
+          "error_ratio": 60.7,
+          "attribution": 42.477
+        },
+        {
+          "feature": "DURATION_IN",
+          "value": 8.361,
+          "error_ratio": 62.9,
+          "attribution": 38.461
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 6.905,
+          "error_ratio": 1.4,
+          "attribution": 23.602
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 7.036,
+          "error_ratio": 1.0,
+          "attribution": 18.594
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 *Unusual traffic spike detected \ud83d\udea8*  \n**What happened:** 59.166.0.9 \u2192 149.171.126.2  \n**Why flagged:** DURATION_OUT = 10.0, 22.4x benign-typical error; SERVER_TCP_FLAGS = 8.353, 60.7x benign-typical error; DURATION_IN = 8.361, 62.9x benign-typical error  \n**Behaviour hypothesis:** consistent with a potential data exfiltration attempt or command\u2011and\u2011control session.  \n**Recommended action:** isolate the destination host and perform a packet capture for forensic analysis."
+  },
+  {
+    "kind": "alert",
+    "pos": 319363,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 459.0,
+      "threshold": 126.7,
+      "src": "59.166.0.1",
+      "dst": "149.171.126.8",
+      "top_features": [
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.8,
+          "attribution": 50.928
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 10.0,
+          "error_ratio": 3.9,
+          "attribution": 48.133
+        },
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 10.0,
+          "error_ratio": 7.6,
+          "attribution": 46.754
+        },
+        {
+          "feature": "OUT_PKTS",
+          "value": 10.0,
+          "error_ratio": 5.4,
+          "attribution": 46.255
+        },
+        {
+          "feature": "IN_PKTS",
+          "value": 10.0,
+          "error_ratio": 4.0,
+          "attribution": 36.024
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 Unusual traffic spike \ud83d\udea8  \n**What happened:** 59.166.0.1 \u2192 149.171.126.8  \n**Why flagged:** RETRANSMITTED_OUT_BYTES = 10.0, 3.8x benign-typical error; NUM_PKTS_512_TO_1024_BYTES = 10.0, 7.6x benign-typical error  \n**Behaviour hypothesis:** consistent with a potential data exfiltration attempt or misconfigured client.  \n**Recommended action:** Investigate the session, capture packet trace, and isolate the source host."
+  },
+  {
+    "kind": "alert",
+    "pos": 618269,
+    "true_label": "Benign",
+    "severity": "high",
+    "record": {
+      "kind": "alert",
+      "score": 132.1,
+      "threshold": 126.7,
+      "src": "59.166.0.0",
+      "dst": "149.171.126.2",
+      "top_features": [
+        {
+          "feature": "NUM_PKTS_512_TO_1024_BYTES",
+          "value": 9.306,
+          "error_ratio": 5.2,
+          "attribution": 35.68
+        },
+        {
+          "feature": "RETRANSMITTED_OUT_BYTES",
+          "value": 7.057,
+          "error_ratio": 1.3,
+          "attribution": 21.582
+        },
+        {
+          "feature": "OUT_PKTS",
+          "value": 7.236,
+          "error_ratio": 1.8,
+          "attribution": 19.216
+        },
+        {
+          "feature": "NUM_PKTS_1024_TO_1514_BYTES",
+          "value": 6.747,
+          "error_ratio": 1.0,
+          "attribution": 14.825
+        },
+        {
+          "feature": "IN_PKTS",
+          "value": 7.063,
+          "error_ratio": 1.1,
+          "attribution": 8.892
+        }
+      ]
+    },
+    "narration": "**Severity:** high \u2014 *Anomalous traffic spike \ud83d\udea8*  \n**What happened:** 59.166.0.0 \u2192 149.171.126.2  \n**Why flagged:** NUM_PKTS_512_TO_1024_BYTES = 9.306, 5.2x benign-typical error; OUT_PKTS = 7.236, 1.8x benign-typical error  \n**Behaviour hypothesis:** consistent with a potential data exfiltration attempt.  \n**Recommended action:** isolate destination host and perform packet capture for forensic analysis."
+  },
+  {
+    "kind": "missed",
+    "pos": 799915,
+    "true_label": "Exploits",
+    "severity": "gap",
+    "record": {
+      "kind": "missed",
+      "score": 17.4,
+      "threshold": 126.7,
+      "src": "175.45.176.0",
+      "dst": "149.171.126.10",
+      "top_features": [
+        {
+          "feature": "MAX_TTL",
+          "value": 1.185,
+          "error_ratio": 6.5,
+          "attribution": 2.305
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 1.178,
+          "error_ratio": 0.8,
+          "attribution": 2.06
+        },
+        {
+          "feature": "L4_DST_PORT",
+          "value": -0.623,
+          "error_ratio": 0.7,
+          "attribution": -1.217
+        },
+        {
+          "feature": "DST_TO_SRC_IAT_AVG",
+          "value": 1.623,
+          "error_ratio": 0.1,
+          "attribution": 1.213
+        },
+        {
+          "feature": "FTP_COMMAND_RET_CODE",
+          "value": -0.464,
+          "error_ratio": 0.0,
+          "attribution": -1.032
+        }
+      ],
+      "true_label": "Exploits",
+      "distance_to_threshold": 109.3
+    },
+    "narration": "**Detection gap:** Model missed exploit due to score 17.4, 109.3 below threshold 126.7  \n**What happened:** 175.45.176.0 \u2192 149.171.126.10  \n**Why flagged:** MAX_TTL = 1.185, 6.5x benign-typical error; MIN_TTL = 1.178, 0.8x error  \n**Behaviour hypothesis:** consistent with anomalous TTL manipulation in exploit traffic.  \n**Recommended action:** Investigate traffic for potential exploitation and apply stricter TTL filtering."
+  },
+  {
+    "kind": "missed",
+    "pos": 1006537,
+    "true_label": "Exploits",
+    "severity": "gap",
+    "record": {
+      "kind": "missed",
+      "score": 19.6,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.10",
+      "top_features": [
+        {
+          "feature": "DST_TO_SRC_IAT_AVG",
+          "value": 1.949,
+          "error_ratio": 0.6,
+          "attribution": 2.002
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 1.178,
+          "error_ratio": 0.7,
+          "attribution": 1.848
+        },
+        {
+          "feature": "MAX_TTL",
+          "value": 1.185,
+          "error_ratio": 5.8,
+          "attribution": 1.726
+        },
+        {
+          "feature": "ICMP_IPV4_TYPE",
+          "value": -0.963,
+          "error_ratio": 0.1,
+          "attribution": -1.596
+        },
+        {
+          "feature": "L4_DST_PORT",
+          "value": -0.62,
+          "error_ratio": 0.6,
+          "attribution": -1.145
+        }
+      ],
+      "true_label": "Exploits",
+      "distance_to_threshold": 107.1
+    },
+    "narration": "**Detection gap:** The model missed an exploit attempt because the score (19.6) fell 107.1 below the threshold (126.7). Key anomalous features\u2014DST_TO_SRC_IAT_AVG (1.949, 0.6), MIN_TTL (1.178, 0.7), MAX_TTL (1.185, 5.8)\u2014were not weighted heavily enough to push the score over the cutoff. The low attribution of ICMP_IPV4_TYPE and L4_DST_PORT further diluted the overall anomaly signal."
+  },
+  {
+    "kind": "missed",
+    "pos": 298810,
+    "true_label": "Exploits",
+    "severity": "gap",
+    "record": {
+      "kind": "missed",
+      "score": 41.0,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.19",
+      "top_features": [
+        {
+          "feature": "L7_PROTO",
+          "value": 10.0,
+          "error_ratio": 33.8,
+          "attribution": 20.478
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 1.178,
+          "error_ratio": 0.5,
+          "attribution": 0.955
+        },
+        {
+          "feature": "MAX_TTL",
+          "value": 1.185,
+          "error_ratio": 4.7,
+          "attribution": 0.732
+        },
+        {
+          "feature": "FTP_COMMAND_RET_CODE",
+          "value": 1.274,
+          "error_ratio": 0.0,
+          "attribution": 0.694
+        },
+        {
+          "feature": "PROTOCOL",
+          "value": -0.471,
+          "error_ratio": 0.1,
+          "attribution": -0.459
+        }
+      ],
+      "true_label": "Exploits",
+      "distance_to_threshold": 85.7
+    },
+    "narration": "**Detection gap:** missed due to score 41.0 far below threshold 126.7 (distance 85.7) despite high L7_PROTO anomaly (value 10.0, 33.8\u00d7 error).  \n**What happened:** 175.45.176.3 \u2192 149.171.126.19  \n**Why flagged:** L7_PROTO = 10.0, 33.8\u00d7 benign-typical error; MIN_TTL = 1.178, 0.5\u00d7 error; MAX_TTL = 1.185, 4.7\u00d7 error.  \n**Behaviour hypothesis:** consistent with stealthy exploitation traffic.  \n**Recommended action:** investigate FTP_COMMAND_RET_CODE 1.274 for potential command injection."
+  },
+  {
+    "kind": "missed",
+    "pos": 761073,
+    "true_label": "Reconnaissance",
+    "severity": "gap",
+    "record": {
+      "kind": "missed",
+      "score": 23.7,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.13",
+      "top_features": [
+        {
+          "feature": "TCP_WIN_MAX_IN",
+          "value": 2.252,
+          "error_ratio": 0.5,
+          "attribution": 2.402
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 1.178,
+          "error_ratio": 0.5,
+          "attribution": 1.514
+        },
+        {
+          "feature": "FTP_COMMAND_RET_CODE",
+          "value": -0.464,
+          "error_ratio": 0.0,
+          "attribution": -1.353
+        },
+        {
+          "feature": "L4_DST_PORT",
+          "value": -0.578,
+          "error_ratio": 0.4,
+          "attribution": -1.215
+        },
+        {
+          "feature": "MAX_TTL",
+          "value": 1.185,
+          "error_ratio": 6.1,
+          "attribution": 1.07
+        }
+      ],
+      "true_label": "Reconnaissance",
+      "distance_to_threshold": 103.1
+    },
+    "narration": "**Detection gap:** Model missed due to low score (23.7) far below threshold (126.7) despite high MAX_TTL error_ratio (6.1).  \n**What happened:** 175.45.176.3 \u2192 149.171.126.13  \n**Why flagged:** MAX_TTL = 1.185, 6.1x benign-typical error; TCP_WIN_MAX_IN = 2.252, 0.5x error.  \n**Behaviour hypothesis:** consistent with subtle reconnaissance traffic.  \n**Recommended action:** Review and adjust threshold for MAX_TTL, add rule to flag high TCP window anomalies."
+  },
+  {
+    "kind": "missed",
+    "pos": 347400,
+    "true_label": "Generic",
+    "severity": "gap",
+    "record": {
+      "kind": "missed",
+      "score": 22.2,
+      "threshold": 126.7,
+      "src": "175.45.176.3",
+      "dst": "149.171.126.15",
+      "top_features": [
+        {
+          "feature": "MIN_TTL",
+          "value": 1.178,
+          "error_ratio": 0.7,
+          "attribution": 1.928
+        },
+        {
+          "feature": "TCP_WIN_MAX_IN",
+          "value": 1.264,
+          "error_ratio": 0.3,
+          "attribution": 1.84
+        },
+        {
+          "feature": "MAX_TTL",
+          "value": 1.185,
+          "error_ratio": 7.6,
+          "attribution": 1.499
+        },
+        {
+          "feature": "FTP_COMMAND_RET_CODE",
+          "value": -0.464,
+          "error_ratio": 0.0,
+          "attribution": -1.487
+        },
+        {
+          "feature": "ICMP_IPV4_TYPE",
+          "value": 1.403,
+          "error_ratio": 0.7,
+          "attribution": 1.221
+        }
+      ],
+      "true_label": "Generic",
+      "distance_to_threshold": 104.5
+    },
+    "narration": "**Detection gap:** missed due to score 22.2 < threshold 126.7 (distance 104.5)  \n**What happened:** 175.45.176.3 \u2192 149.171.126.15  \n**Why flagged:** MIN_TTL = 1.178, 0.7 benign\u2011typical error; TCP_WIN_MAX_IN = 1.264, 0.3 benign\u2011typical error; MAX_TTL = 1.185, 7.6 benign\u2011typical error; FTP_COMMAND_RET_CODE = -0.464, 0.0 benign\u2011typical error; ICMP_IPV4_TYPE = 1.403, 0.7 benign\u2011typical error.  \n**Behaviour hypothesis:** consistent with anomalous low\u2011TTL traffic possibly evading detection.  \n**Recommended action:** review low\u2011TTL flows and adjust model threshold or feature weighting."
+  },
+  {
+    "kind": "missed",
+    "pos": 966480,
+    "true_label": "Reconnaissance",
+    "severity": "gap",
+    "record": {
+      "kind": "missed",
+      "score": 17.9,
+      "threshold": 126.7,
+      "src": "175.45.176.2",
+      "dst": "149.171.126.18",
+      "top_features": [
+        {
+          "feature": "TCP_WIN_MAX_IN",
+          "value": 2.814,
+          "error_ratio": 1.6,
+          "attribution": 4.324
+        },
+        {
+          "feature": "MAX_TTL",
+          "value": 1.185,
+          "error_ratio": 6.5,
+          "attribution": 2.357
+        },
+        {
+          "feature": "MIN_TTL",
+          "value": 1.178,
+          "error_ratio": 0.5,
+          "attribution": 2.042
+        },
+        {
+          "feature": "ICMP_IPV4_TYPE",
+          "value": 1.403,
+          "error_ratio": 0.4,
+          "attribution": 0.9
+        },
+        {
+          "feature": "FTP_COMMAND_RET_CODE",
+          "value": -0.464,
+          "error_ratio": 0.2,
+          "attribution": -0.832
+        }
+      ],
+      "true_label": "Reconnaissance",
+      "distance_to_threshold": 108.8
+    },
+    "narration": "**Detection gap:** The model missed the event because the score (17.9) fell 108.8 below the threshold (126.7). Key anomalies\u2014TCP_WIN_MAX_IN (2.814, 1.6\u00d7 error) and MAX_TTL (1.185, 6.5\u00d7 error)\u2014were not weighted enough to push the score over the cutoff. The benign\u2011typical error ratios for MIN_TTL (0.5\u00d7) and ICMP_IPV4_TYPE (0.4\u00d7) further diluted the overall anomaly signal."
+  }
+]
