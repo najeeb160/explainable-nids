@@ -12,7 +12,7 @@ NF-UNSW-NB15-v3 — 2,365,424 labeled NetFlow records, 53 features, 10 attack ca
  [✔] Phase 1 — Dataset exploration and analysis  
  [✔] Phase 2 — Preprocessing & graph construction (44-node graph, 2.35M edges, 45 features)  
  [✔] Phase 3 — GraphIDS training & evaluation (E-GraphSAGE + Transformer MAE)   
- [] Phase 4 — Explainability module, LLM narration  
+ [✔] Phase 4 — Explainability module, LLM narration  
  [] Phase 5 — Final report and documentation
 
 ## 📊 Phase 3 Results — GraphIDS
@@ -43,7 +43,7 @@ Open the notebooks directly in Colab — no setup needed:
 | Phase 1 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase1-data-exploration) |
 | Phase 2 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase2-preprocessing-graph) |
 | Phase 3 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase3-graphids-training) |
-| Phase 3 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase4-explainability-llm-narration) |
+| Phase 4 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase4-explainability-llm-narration) |
 	
 	
 ## Repository Structure
