@@ -34,6 +34,35 @@ NF-UNSW-NB15-v3 — 2,365,424 labeled NetFlow records, 53 features, 10 attack ca
 **Artifacts:** artifacts/phase3_summary.json · artifacts/phase3_figures.png · artifacts/graphids_model.pt  
 **Notebook:** notebooks/Phase3_GraphIDS_Training.ipynb
 
+## 🔍 Phase 4 Results — Explainability & LLM Narration
+Every GraphIDS alert is explained at five levels: exact per-dimension reconstruction error in GNN embedding space (z = [src-context 48 | flow 45 | dst-context 48]), Integrated Gradients (Captum) attributions of each edge's anomaly score to its 45 flow features, aggregate forensics over the full 1.03M-edge test set, flagship TP/FN/FP case studies, and LLM-generated SOC alerts with an automated faithfulness check of 81% (34/36 narrations valid).
+
+**Reproduction gate:** Phase 4 re-derived the Phase 3 test set bit-for-bit before explaining anything — TP 70,233 / FP 8,000 / FN 22,418 / TN 935,244, PR-AUC 0.8074, ROC-AUC 0.9813 (exact match). Every explanation applies to the exact evaluated model.
+
+**Flagship case studies**
+| Case | True label | Score vs threshold | Strongest anomaly (IG) | Verdict |
+| :--- | :--- | :--- | :--- | :--- |
+| ✅ TP | Exploits | 379.8 vs 126.7 (3.0× over) | `MAX_TTL` 358.5× benign-typical (+159.8) | Detector right for the right reason — the classic off-subnet TTL signature |
+| 🕳️ FN | Exploits | 106.3 (84% of cutoff) | `RETRANSMITTED_IN_BYTES` 69.6× (+30.2) | Real but sub-threshold — signal outside the TTL channel that flags other Exploits |
+| ⚠️ FP | Benign | 677.8 (5.3× over) | `DURATION_IN` 103.8× (+63.4) | Benign long-lived transfer whose timing mimics attack patterns |
+  
+**Key findings**
+1. **Why Exploits are missed** (largest FN mass): detected Exploit flows carry an anomalous TTL signature (MAX_TTL error 300–358× benign-typical on every detected edge); missed Exploits lack exactly that signal (4.7–7.6×) — consistent with the documented UNSW-NB15 caveat that TTL features act as "hidden labels." Honest limitation; motivates a no-TTL ablation as future work.
+2. **False positives are a coherent cluster, not noise:** driven by SRC_TO_DST_IAT_AVG, DURATION_IN/OUT and SERVER_TCP_FLAGS — benign long-lived transfers with unusual packet timing. The largest explainable FP is OSPF multicast (10.40.182.1 → 224.0.0.5), flagged for its alien timing profile (SRC_TO_DST_IAT_AVG error 435×) — a whitelisting candidate, not a model failure.
+3. **Analysis (lowest recall) explained:** its reconstruction error splits 20% src-context / 62% flow / 18% dst-context vs ~4/92/4 for every other class — benign-looking features on atypical node pairs leave too little signal in either channel.
+4. **Faithful, styled LLM narration:** SOC dashboard with severity badges (🔴🟠🟡🟢) and 🕳️ detection-gap markers; the notebook console shows the decision logic first (rule → check → outcome → evidence), then the plain-text verdict. The LLM cited model-attributed features in 81% of automated checks — real feature names (fingerprint-verified from the Phase 2 scaler) made explanations human-usable.
+
+
+**Artifacts:** 
+· artifacts/phase4_summary.json
+· artifacts/phase4_figures.png
+· artifacts/phase4_alerts.json 
+· artifacts/phase4_narration.md 
+· artifacts/phase4_cases.md 
+· artifacts/explain_samples.json 
+
+**Notebook:** notebooks/Phase4_Explainability_LLM_Narration_1.ipynb
+
 ## Quick Start
 Open the notebooks directly in Colab — no setup needed:
 
@@ -54,20 +83,27 @@ Open the notebooks directly in Colab — no setup needed:
 	│       └── phase3_narration.md
 	│       └── phase3_summary.json
 	│       └── threshold.npy
+	│       └── phase4_summary.json 
+	│       └── phase4_figures.png 
+	│       └── phase4_alerts.json 
+	│       └── phase4_narration.md 
+	│       └── phase4_cases.md 
+	│       └── explain_samples.json
     ├── notebooks/ 
     │       └── Phase0_Setup.ipynb
 	│       └── Phase1_Data_Exploration.ipynb
 	│       └── Phase2_Preprocessing_Graph.ipynb
 	│       └── Phase3_GraphIDS_Training.ipynb
-	│       └── Phase4_Explainability_LLM_Narration_1.ipynb
+	│       └── Phase4_Explainability_LLM_Narration.ipynb
 	├── reports/
 	│       └── data_quality_report.md
 	│       └── phase2_preprocessing_report.md
+	│       └── phase4_explainability_report.md
+	└── .gitignore
+	├── LICENSE 
     ├── README.md 
-    ├── LICENSE 
     ├── requirements.txt 
-    └── .gitignore
-
+    
 
 ## Tech Stack
 
