@@ -1,0 +1,67 @@
+{
+  "phase": "Phase 5 \u2014 No-TTL ablation",
+  "finished": "2026-11-23T18:04:00",
+  "design": "Identical protocol to Phase 3 (seed 42, same splits/architecture/benign-only training, p99 threshold rule); single controlled change: MIN_TTL + MAX_TTL removed (45 -> 43 features).",
+  "dropped_features": [
+    "MIN_TTL",
+    "MAX_TTL"
+  ],
+  "dropped_positions": [
+    14,
+    15
+  ],
+  "parameters": 83755,
+  "train_benign_edges": 1114449,
+  "epochs_run": 35,
+  "best_val_pr_auc": 0.3407,
+  "baseline": {
+    "pr_auc": 0.807369628922106,
+    "roc_auc": 0.9813361764291952,
+    "precision": 0.8977413623407002,
+    "recall": 0.758038229484841,
+    "f1": 0.8219962079539337,
+    "tp": 70233,
+    "fp": 8000,
+    "fn": 22418,
+    "tn": 935244,
+    "threshold": 126.72205352783203,
+    "n_test": 1035895,
+    "n_test_attacks": 92651
+  },
+  "ablation": {
+    "pr_auc": 0.33218292953220996,
+    "roc_auc": 0.8885391141987252,
+    "precision": 0.13832375055285273,
+    "recall": 0.01350228276003497,
+    "f1": 0.024602979497517087,
+    "tp": 1251,
+    "fp": 7793,
+    "fn": 91400,
+    "tn": 935451,
+    "threshold": 223.7418212890625,
+    "n_test": 1035895,
+    "n_test_attacks": 92651
+  },
+  "per_class_baseline": {
+    "Exploits": 0.479,
+    "Fuzzers": 0.982,
+    "Generic": 0.905,
+    "Reconnaissance": 0.915,
+    "DoS": 0.691,
+    "Shellcode": 0.897,
+    "Backdoor": 0.796,
+    "Analysis": 0.014,
+    "Worms": 0.975
+  },
+  "per_class_ablation": {
+    "Analysis": 0.004,
+    "Exploits": 0.018,
+    "DoS": 0.03,
+    "Backdoor": 0.017,
+    "Generic": 0.014,
+    "Shellcode": 0.003,
+    "Reconnaissance": 0.011,
+    "Worms": 0.05,
+    "Fuzzers": 0.007
+  }
+}
