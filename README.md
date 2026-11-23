@@ -13,7 +13,7 @@ NF-UNSW-NB15-v3 — 2,365,424 labeled NetFlow records, 53 features, 10 attack ca
  [✔] Phase 2 — Preprocessing & graph construction (44-node graph, 2.35M edges, 45 features)  
  [✔] Phase 3 — GraphIDS training & evaluation (E-GraphSAGE + Transformer MAE)   
  [✔] Phase 4 — Explainability module, LLM narration  
- [] Phase 5 — Final report and documentation
+ [✔] Phase 5 — Final report and documentation
 
 ## 📊 Phase 3 Results — GraphIDS
 **Model:** E-GraphSAGE (1-hop, node dim 48) + 1-layer Transformer MAE (d_model 48, 4 heads, window 512, mask ratio 0.15) — 84,141 parameters. Trained jointly on 1,114,449 benign edges only (self-supervised reconstruction); threshold = p99 of benign validation reconstruction error (126.7). Early stopping at epoch 47; best val PR-AUC 0.7988.
@@ -54,14 +54,48 @@ Every GraphIDS alert is explained at five levels: exact per-dimension reconstruc
 
 
 **Artifacts:** 
-· artifacts/phase4_summary.json
-· artifacts/phase4_figures.png
-· artifacts/phase4_alerts.json 
-· artifacts/phase4_narration.md 
-· artifacts/phase4_cases.md 
-· artifacts/explain_samples.json 
+· artifacts/phase4_summary.json · artifacts/phase4_figures.png · artifacts/phase4_alerts.json · artifacts/phase4_narration.md · artifacts/phase4_cases.md · artifacts/explain_samples.json 
 
 **Notebook:** notebooks/Phase4_Explainability_LLM_Narration_1.ipynb
+
+## 🎯 Phase 5 Results — No-TTL Ablation Study
+**Question:** does detection depend on the TTL "hidden label" uncovered in Phase 4?  
+Phase 4's Integrated-Gradients forensics showed every detected attack carried an anomalous TTL signature (MAX_TTL error 300–358× benign-typical) while missed attacks lacked it (4.7–7.6×). This ablation tests that hypothesis with a **single controlled change:** '**MIN_TTL**' and '**MAX_TTL**' removed (45 → 43 features) — everything else identical to Phase 3 (seed 42, same temporal split, same architecture, benign-only training, same p99 threshold rule).
+
+
+| Metric | With TTL (45 feats) | No TTL (43 feats) | Δ |
+| :--- | :---: | :---: | :---: |
+| Validation PR-AUC | 0.7988 | 0.3407 | −0.458 |
+| Test PR-AUC | 0.8074 | 0.3322 | −0.475 |
+| ROC-AUC | 0.9813 | 0.8885 | −0.093 |
+| Val F1 @ p95 threshold | 0.765 | 0.425 | −0.340 |
+| Test F1 @ p99 (protocol rule) | 0.8220 | 0.0246 | −0.797 |
+
+**Per-class test recall collapse** (every class loses >66 points except the already-failing Analysis):
+
+| Class | w/ TTL | No TTL |
+| :--- | :---: | :---: |
+| Fuzzers | 98.2% | 0.7% |
+| Worms | 97.5% | 5.0% |
+| Reconnaissance | 91.5% | 1.1% |
+| Generic | 90.5% | 1.4% |
+| Shellcode | 89.7% | 0.3% |
+| Backdoor | 79.6% | 1.7% |
+| DoS | 69.1% | 3.0% |
+| Exploits | 47.9% | 1.8% |
+| Analysis | 1.4% | 0.4% |
+
+Findings:
+
+- **The collapse is universal** — TTL was carrying nearly all discriminative signal, not just the Exploits channel Phase 4 highlighted.
+- **Ranking survives; separability dies** — ROC-AUC falls only 0.09 while threshold detection collapses: without TTL, the attack score distribution (val mean 35.6) overlaps the benign tail (p99 = 223.7) so heavily that no practical operating point exists. Even the best validation operating point (p95) reaches only F1 0.425 vs 0.765 for the TTL model under the identical rule.
+- **The ablation confirms the attribution analysis** — Integrated Gradients identified TTL as the dominant driver of correct detections before the ablation; the controlled experiment then quantified exactly how much that driver was worth.
+
+**Interpretation:** TTL is both a testbed artifact (UNSW-NB15's simulated attackers carry distinctive TTL values — the documented hidden-label caveat) and a trivially spoofable feature in adversarial settings. Either way, performance that collapses without it is fragile — and the dependency would have remained invisible without the explainability stack. This is the project's central methodological finding: **attribution analysis functions as a diagnostic instrument for benchmark validity, not merely alert decoration.**  
+
+**Artifacts:** artifacts/phase5_ablation_summary.json · artifacts/phase5_figures.png · artifacts/graphids_model_nottl.pt  
+
+**Notebook:** notebooks/Phase5_NoTTL_Ablation_1.ipynb
 
 ## Quick Start
 Open the notebooks directly in Colab — no setup needed:
@@ -73,6 +107,7 @@ Open the notebooks directly in Colab — no setup needed:
 | Phase 2 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase2-preprocessing-graph) |
 | Phase 3 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase3-graphids-training) |
 | Phase 4 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase4-explainability-llm-narration) |
+| Phase 5 | [![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/najeebullah160/phase5-nottl-ablation) |
 	
 	
 ## Repository Structure
@@ -89,16 +124,21 @@ Open the notebooks directly in Colab — no setup needed:
 	│       └── phase4_narration.md 
 	│       └── phase4_cases.md 
 	│       └── explain_samples.json
+	│       └── graphids_model_nottl.pt
+	│       └── phase5_ablation_summary.json
+	│       └── phase5_figures.png
     ├── notebooks/ 
     │       └── Phase0_Setup.ipynb
 	│       └── Phase1_Data_Exploration.ipynb
 	│       └── Phase2_Preprocessing_Graph.ipynb
 	│       └── Phase3_GraphIDS_Training.ipynb
 	│       └── Phase4_Explainability_LLM_Narration.ipynb
+	│       └── Phase5_NoTTL_Ablation.ipynb
 	├── reports/
 	│       └── data_quality_report.md
 	│       └── phase2_preprocessing_report.md
 	│       └── phase4_explainability_report.md
+	│       └── phase5_ablation_report.md
 	└── .gitignore
 	├── LICENSE 
     ├── README.md 
